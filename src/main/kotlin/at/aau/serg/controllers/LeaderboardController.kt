@@ -23,7 +23,7 @@ class LeaderboardController(
 
         //ungültiger rank, ganze Liste wird ausgegeben
         if(rank == null){
-            return leaderboardSorted;
+            return leaderboardSorted
         }
 
         //ungültiger rank, Fehler HTTP 400 wird angezeigt
