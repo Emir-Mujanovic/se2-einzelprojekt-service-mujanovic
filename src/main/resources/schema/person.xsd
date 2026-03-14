@@ -2,12 +2,12 @@
   <xs:element name="person">
     <xs:complexType>
       <xs:sequence>
-        <xs:element type="xs:string" name="name"/>
-        <xs:element type="xs:string" name="matrikelnummer"/>
+        <xs:element type="xs:string" name="Emir Mujanovic"/>
+        <xs:element type="xs:string" name="12408724"/>
         <xs:element type="xs:string" name="lastcommithash"/>
-        <xs:element type="xs:string" name="githubusername"/>
-        <xs:element type="xs:string" name="repositoryname"/>
-        <xs:element type="xs:string" name="repositoryurl"/>
+        <xs:element type="xs:string" name="Emir-Mujanovic"/>
+        <xs:element type="xs:string" name="se2-einzelprojekt-service-mujanovic"/>
+        <xs:element type="xs:string" name="https://github.com/Emir-Mujanovic/se2-einzelprojekt-service-mujanovic"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
