@@ -53,37 +53,46 @@ class LeaderboardControllerTests {
 
         assertEquals(listOf(players[1], players[2], players[3], players[4], players[5]), res)
 
-        @Test
-        fun test_getLeaderboard_invalidRank() {
-            whenever(mockedService.getGameResults())
-                .thenReturn(emptyList())
 
-            assertFailsWith<ResponseStatusException> {
-                controller.getLeaderboard(-1)
-            }
+    }
+    @Test
+    fun test_getLeaderboard_invalidRank() {
+        whenever(mockedService.getGameResults())
+            .thenReturn(emptyList())
+
+        assertFailsWith<ResponseStatusException> {
+            controller.getLeaderboard(-1)
         }
+    }
 
-        @Test
-        fun test_getLeaderboard_sameScore_CorrectIdSorting() {
-            val first = GameResult(1, "first", 20, 9.0)
-            val second = GameResult(2, "second", 20, 10.0)
-            val third = GameResult(3, "third", 20, 15.0)
+    @Test
+    fun test_getLeaderboard_sameScore_CorrectIdSorting() {
+        val first = GameResult(1, "first", 20, 9.0)
+        val second = GameResult(2, "second", 20, 10.0)
+        val third = GameResult(3, "third", 20, 15.0)
 
-            whenever(mockedService.getGameResults()).thenReturn(listOf(first, second, third))
+        whenever(mockedService.getGameResults()).thenReturn(listOf(first, second, third))
 
-            val res: List<GameResult> = controller.getLeaderboard(null)
+        val res: List<GameResult> = controller.getLeaderboard(null)
 
-            verify(mockedService).getGameResults()
-            assertEquals(3, res.size)
-            assertEquals(first, res[0])
-            assertEquals(second, res[1])
-            assertEquals(third, res[2])
+        verify(mockedService).getGameResults()
+        assertEquals(3, res.size)
+        assertEquals(first, res[0])
+        assertEquals(second, res[1])
+        assertEquals(third, res[2])
+    }
+
+    @Test
+    fun test_getLeaderboard_rankTooHigh_throwsBadRequest() {
+        val first = GameResult(1, "first", 20, 9.0)
+        val second = GameResult(2, "second", 20, 10.0)
+        val third = GameResult(3, "third", 20, 15.0)
+
+        whenever(mockedService.getGameResults()).thenReturn(listOf(first, second, third))
+
+        //es gibt nur 3 Spieler, rang 5 ist zu hoch/OutofBounds
+        assertFailsWith<ResponseStatusException> {
+            controller.getLeaderboard(5)
         }
-        
-
-
-
-
-
     }
 }
