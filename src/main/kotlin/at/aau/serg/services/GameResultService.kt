@@ -10,13 +10,13 @@ class GameResultService {
     private val gameResults = mutableListOf<GameResult>()
     private var nextId = AtomicLong(1)
 
-    /*init {
+    init {
         addGameResult(GameResult(0, "Anna", 150, 32.5))
         addGameResult(GameResult(0, "Chris", 150, 35.0))
         addGameResult(GameResult(0, "Eli", 140, 33.5))
         addGameResult(GameResult(0, "Ben", 120, 30.0))
         addGameResult(GameResult(0, "Dora", 100, 28.0))
-    }*/
+    }
 
         fun addGameResult(gameResult: GameResult) {
         gameResult.id = nextId.getAndIncrement()

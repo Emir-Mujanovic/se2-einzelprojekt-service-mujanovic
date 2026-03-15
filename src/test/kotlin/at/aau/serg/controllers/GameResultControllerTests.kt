@@ -35,14 +35,15 @@ class GameResultControllerTests {
     fun test_getAllGameResults_returnsWholeListGameResult() {
         val a = GameResult(1, "A", 100, 20.0)
         val b = GameResult(2, "B", 90, 15.0)
-        val c = GameResult(3, "C", 90, 14.0)
+        val c = GameResult(3, "C", 80, 14.0)
 
         whenever(mockedService.getGameResults()).thenReturn(listOf(a, b, c))
 
+        val list = listOf(a, b, c)
         val result = controller.getAllGameResults()
 
         verify(mockedService).getGameResults()
-        assertEquals(listOf(a, c, b), result)
+        assertEquals(list, result)
     }
 
     @Test
