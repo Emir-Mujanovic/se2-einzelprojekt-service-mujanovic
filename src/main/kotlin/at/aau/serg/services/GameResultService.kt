@@ -11,12 +11,12 @@ class GameResultService {
     private var nextId = AtomicLong(1)
 
     init {
-        addGameResult(GameResult(0, "Anna", 150, 32.5))
-        addGameResult(GameResult(0, "Chris", 150, 35.0))
-        addGameResult(GameResult(0, "Eli", 140, 33.5))
-        addGameResult(GameResult(0, "Ben", 120, 30.0))
-        addGameResult(GameResult(0, "Dora", 100, 28.0))
-    }
+        addGameResult(GameResult(1, "Anna", 150, 32.5))
+        addGameResult(GameResult(2, "Chris", 150, 35.0))
+        addGameResult(GameResult(3, "Eli", 140, 33.5))
+        addGameResult(GameResult(4, "Ben", 120, 30.0))
+        addGameResult(GameResult(5, "Dora", 100, 28.0))
+    } //Im GameResultService wurde das init auskommentiert weil die bestehenden tests fehlschlagen?. Wenn man die Web Applikation auf Springboot testen will, bitte die auskommentierung löschen und testen. Tests schlagen ansonsten fehl
 
         fun addGameResult(gameResult: GameResult) {
         gameResult.id = nextId.getAndIncrement()
